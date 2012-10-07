@@ -1,12 +1,17 @@
-#include <iostream>
-#include <stdio.h>
+#ifndef INDEX_H
+#define INDEX_H
+
 #include <vector>
 #include <set>
 #include <string.h>
 #include <cmath>
+#include <iostream>
+#include <cstring>
+
 using namespace std;
 
 #define MAX_LEN	1000
+
 class term
 {
 public:
@@ -113,6 +118,7 @@ public:
                 }
         }
 };
+
 void load(vector<doc> &vd)
 {
         char whole[MAX_LEN];
@@ -163,22 +169,5 @@ void load(vector<doc> &vd)
         doc tmpd(ctt,vt);
         vd.push_back(tmpd);
 }
-int main()
-{
-        vector<doc> dv;
-        load(dv);
-        load(dv);
-        load(dv);
-        dtm tmp(dv);
-        tmp.comp_tf_idf();
-        for(set<string>::iterator j=tmp.all_term.begin(); j!=tmp.all_term.end(); j++) {
-                cout<<*j<<endl;
-        }
-        for(int i=0; i<tmp.doc_num; i++) {
-                for(int j=0; j<tmp.term_num; j++) {
-                        cout<<tmp.tf_idf[i][j]<<" ";
-                }
-                cout<<endl;
-        }
-        return 0;
-}
+
+#endif
